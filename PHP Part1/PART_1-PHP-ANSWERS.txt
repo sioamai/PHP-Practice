@@ -1,0 +1,182 @@
+				--PHP_Practice-Answers.txt--
+
+ANSWERS-PHP-Questions
+
+1. Person Object ( 
+	[name] => Alice 
+	[age] => 25 )
+
+2. object(Person)#1 (2) {
+  	["name"]=>
+  	string(5) "Alice"
+  	["age"]=>
+  	int(25)
+}
+
+3. float(10.5)
+
+4. the dot (.) operator
+
+5. localhost
+
+6. <?php
+	define('PI', 3.1416);
+	echo PI;
+?>
+
+7. 9
+
+8. PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\PHP-questions\qst.php on line 5
+
+9. first_name, last_name, age
+
+10. <?php
+	$colors = [
+    		1 => 'red',
+    		2 => 'green',
+    		3 => 'blue',
+	];
+	$colors[2] = 'white';
+	echo $colors[2]; // or var_dump($colors);
+?>
+
+11. #f00
+
+12. 6
+
+13. Maeve
+
+14. jane@gmail.com
+
+15. array(2) {
+	[0]=>
+  array(2) {
+    	[0]=>
+    	string(5) "apple"
+    	[1]=>
+    	string(6) "banana"
+  	}
+  	[1]=>
+  array(1) {
+    	[0]=>
+    	string(6) "orange"
+  	}
+}
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+				--Practice_01.php--
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice_01: Triangle Area Calculator</title>
+</head>
+<body>
+    <h2>Calculate the Area of a Triangle</h2>
+    <form method="POST">
+        Side 1: <input type="number" step="any" name="side1" required><br>
+        Side 2: <input type="number" step="any" name="side2" required><br>
+        Side 3: <input type="number" step="any" name="side3" required><br>
+        <input type="submit" name="submit" value="Calculate Area">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $side1 = $_POST['side1'];
+        $side2 = $_POST['side2'];
+        $side3 = $_POST['side3'];
+        
+        $s = ($side1 + $side2 + $side3) / 2;
+
+        $areaSquared = $s * ($s - $side1) * ($s - $side2) * ($s - $side3);
+
+        if ($areaSquared > 0) {
+            $area1 = $areaSquared;
+            $x = 1;
+            for ($i = 0; $i < 10; $i++) {
+                $x = ($x + $area1 / $x) / 2;
+            }
+            
+            echo "<h3>Triangle Area: " . number_format($x, 2) . " square units</h3>";
+        } else {
+            echo "<h3>Please input valid values</h3>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+				--Practice_02.php--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice_02: Array of Fruits</title>
+</head>
+<body>
+    <h2>List of Fruits</h2>
+    
+    <?php
+    $fruits = array("Apple", "Banana", "Cherry", "Mango", "Orange");
+    echo "<ol>";
+        for ($i = 0; $i < count($fruits); $i++) {
+            echo "<li>" . $fruits[$i] . "</li>";
+        }
+    echo "</ol>";
+    ?>
+</body>
+</html>
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+				--Practice_03.php--
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice_03: Array of Even Numbers</title>
+</head>
+<body>
+    <h2>List of Even Numbers</h2>
+
+    <?php
+    $matrix = [
+        [12, 23, 34],
+        [45, 55, 62],
+        [71, 84, 90]
+    ];
+    
+    echo "<ul>";
+    $i = 0;
+    while ($i < count($matrix)) {
+        $x = 0;
+        while ($x < count($matrix[$i])) {
+            if ($matrix[$i][$x] % 2 == 0) {
+                echo "<li>" . $matrix[$i][$x] . "</li>";
+            }
+            $x++;
+        }
+        $i++;
+    }
+    echo "</ul>";
+    ?>
+</body>
+</html>
+
